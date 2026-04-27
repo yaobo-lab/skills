@@ -7,28 +7,28 @@
 ```rust
 // src/dtos/user_dto.rs
 
-use garde::Validate;
+use validator::Validate;
 use serde::Deserialize;
 use utoipa::ToSchema;
 
 #[derive(Debug, Deserialize, Validate, ToSchema)]
 pub struct CreateUserReq {
-    #[garde(length(min = 2, max = 50))]
+    #[validate(length(min = 1, message = "name 不能为空"))]
     pub username: String,
 
-    #[garde(email)]
+    #[validate(email)]
     pub email: String,
 
-    #[garde(length(min = 8, max = 128))]
+    #[validate(length(min = 8, max = 128))]
     pub password: String,
 }
 
 #[derive(Debug, Deserialize, Validate, ToSchema)]
 pub struct UpdateUserReq {
-    #[garde(length(min = 2, max = 50))]
+    #[validate(length(min =2, max = 50))]
     pub username: Option<String>,
 
-    #[garde(email)]
+    #[validate(email)]
     pub email: Option<String>,
 }
 

@@ -21,9 +21,10 @@ axum = { version = "0.8.8", features = ["multipart", "http1", "http2", "tokio", 
 tower = "0.5.3"
 tower-http = { version = "0.6.8", features = ["fs", "compression-gzip", "compression-br", "trace", "cors", "add-extension", "request-id", "set-header", "limit"] }
 socket2 = { version = "0.6.3", features = ["all"] }
-validator = { version = "0.20.0", features = ["derive"] }
 headers = "0.4.1"
 
+# Validation library
+validator = { version = "0.20.0", features = ["derive"] }
 
 # HTTP client
 reqwest = { version = "0.13.2", default-features = false, features = ["json", "form", "rustls"] }
@@ -51,10 +52,7 @@ utoipa-swagger-ui = { version = "9.0.2", features = ["axum"] }
 utoipa-axum = "0.2.0"
 
 # Async trait
-async-trait = "0.1.89"
-
-# Validation library
-garde = { version = "0.22.0", features = ["full"] }
+async-trait = "0.1.89" 
 ```
 
  

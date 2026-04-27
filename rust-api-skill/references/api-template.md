@@ -9,9 +9,9 @@ use axum::{
     extract::{Path, Query, State},
     Json,
 };
-use garde::Validate;
+use validator::Validate;
 use crate::dtos::user_dto::{CreateUserReq, UpdateUserReq, ListUserReq, UserResp, UserListResp};
-use crate::services::user_service::UserService;
+use crate::services::user_service::user_service;
 use crate::types::app_state::AppState;
 use crate::types::error::AppError;
 
@@ -21,7 +21,7 @@ pub async fn create_user(
     Json(req): Json<CreateUserReq>,
 ) -> Result<Json<ApiResult<UserResp>>, AppError> {
     req.validate()?;
-    let resp = UserService::create(&state, &req).await?;
+    let resp = user_service::create(&state, &req).await?;
     Ok(Json(ApiResult::success(resp)))
 }
 
@@ -30,7 +30,7 @@ pub async fn list_users(
     State(state): State<AppState>,
     Query(req): Query<ListUserReq>,
 ) -> Result<Json<ApiResult<UserListResp>>, AppError> {
-    let resp = UserService::list(
+    let resp = user_service::list(
         &state,
         req.page.unwrap_or(1),
         req.page_size.unwrap_or(20),
@@ -44,7 +44,7 @@ pub async fn get_user(
     State(state): State<AppState>,
     Path(id): Path<Uuid>,
 ) -> Result<Json<ApiResult<UserResp>>, AppError> {
-    let resp = UserService::get(&state, id).await?;
+    let resp = user_service::get(&state, id).await?;
     Ok(Json(ApiResult::success(resp)))
 }
 
@@ -55,7 +55,7 @@ pub async fn update_user(
     Json(req): Json<UpdateUserReq>,
 ) -> Result<Json<ApiResult<UserResp>>, AppError> {
     req.validate()?;
-    let resp = UserService::update(&state, id, &req).await?;
+    let resp = user_service::update(&state, id, &req).await?;
     Ok(Json(ApiResult::success(resp)))
 }
 
@@ -64,7 +64,7 @@ pub async fn delete_user(
     State(state): State<AppState>,
     Path(id): Path<Uuid>,
 ) -> Result<Json<ApiResult<()>>, AppError> {
-    UserService::delete(&state, id).await?;
+    user_service::delete(&state, id).await?;
     Ok(Json(ApiResult::success(())))
 }
 

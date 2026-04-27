@@ -56,9 +56,9 @@ impl IntoResponse for AppError {
     }
 }
 
-/// garde 校验错误自动转换
-impl From<garde::Errors> for AppError {
-    fn from(errs: garde::Errors) -> Self {
+ 
+impl From<validator::ValidationError> for AppError {
+    fn from(errs: validator::ValidationError) -> Self {
         AppError::ValidationError(errs.to_string())
     }
 }

@@ -24,6 +24,9 @@ rust-api/
 │   ├── web/
 │   │   ├── api/                 # 接口路由层
 │   │   └── middleware/          # 全局中间件
+│   │   └── routes.rs            # 接口路由注册
+│   │   └── swagger.rs           # Swagger 文档配置
+│   │   └── mod.rs                # 接口路由层模块导出
 │   ├── services/                # 业务逻辑层
 │   ├── repos/                   # 数据持久化层
 │   ├── entities/                # SeaORM 数据库实体

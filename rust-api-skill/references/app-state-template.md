@@ -9,12 +9,13 @@ use sea_orm::DatabaseConnection;
 use moka::future::Cache;
 use std::sync::Arc;
 use crate::types::config::AppConfig;
+use moka_cache::MokaCache;
 
 #[derive(Clone)]
 pub struct AppState {
     pub db: DatabaseConnection,
     pub config: Arc<AppConfig>,
-    pub cache: Cache<String, String>,
+    pub cache: Arc<MokaCache>,
 }
 ```
 
