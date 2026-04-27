@@ -190,5 +190,7 @@ rust-api/
 - **Repo 模板**：参见 [references/repo-template.md](references/repo-template.md)
 - **Service 模板**：参见 [references/service-template.md](references/service-template.md)
 - **API Handler 模板**：参见 [references/api-template.md](references/api-template.md)
+- **API Router 模板**：参见 [references/router-template.md](references/router-template.md)
 - **AppState 模板**：参见 [references/app-state-template.md](references/app-state-template.md)
 - **AppError 模板**：参见 [references/error-template.md](references/error-template.md)
+- **startup.rs 模板**：参见 [references/startup-template.md](references/startup-template.md)

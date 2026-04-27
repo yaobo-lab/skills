@@ -68,12 +68,7 @@ pub async fn delete_user(
     Ok(Json(ApiResult::success(())))
 }
 
-/// 路由注册
-pub fn user_router() -> Router<AppState> {
-    Router::new()
-        .route("/api/users", post(create_user).get(list_users))
-        .route("/api/users/{id}", get(get_user).put(update_user).delete(delete_user))
-}
+
 ```
 
 ## 约束
